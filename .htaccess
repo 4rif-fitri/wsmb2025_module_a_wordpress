@@ -1,0 +1,26 @@
+
+# BEGIN All In One WP Security
+#AIOWPS_ENABLE_BRUTE_FORCE_PREVENTION_START
+RewriteEngine On
+RewriteCond %{REQUEST_URI} (wp-admin|wp-login)
+RewriteCond %{HTTP_COOKIE} !aiowps_secret= [NC]
+RewriteCond %{HTTP_COOKIE} !aiowps_cookie_test_13vmp7t2gs= [NC]
+RewriteRule .* http://127.0.0.1 [L]
+#AIOWPS_ENABLE_BRUTE_FORCE_PREVENTION_END
+# END All In One WP Security
+
+# BEGIN WordPress
+# The directives (lines) between "BEGIN WordPress" and "END WordPress" are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /wsmb2025_module_a/
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /wsmb2025_module_a/index.php [L]
+</IfModule>
+
+# END WordPress
